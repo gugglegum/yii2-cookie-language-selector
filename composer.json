@@ -1,0 +1,22 @@
+{
+    "name": "gugglegum/yii2-cookie-language-selector",
+    "version": "1.0.0",
+    "description": "Yii2 language selector component based on cookies",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","i18n","multilanguage"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Melekhov",
+            "email": "gugglegum@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "gugglegum\\Yii2\\Extension\\CookieLanguageSelector\\": ""
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "*"
+    }
+}
