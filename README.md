@@ -40,7 +40,27 @@ The initialization of `cookieLanguageSelector` will just set `Yii::$app->languag
 
 ### 4. Create POST form on your web-site
 
-You should create HTML form with POST method or ajax with POST to send new language to server side. Your form may contain only `language` parameter. Additionally you may send `redirectTo` parameter with URL your user should be redirected after switching language (the same URL where he was before). The names of this parameters (`language` and `redirectTo`) is not predefined, it's up to you and used only in step 5.
+You should create HTML form with POST method or ajax with POST to send new language to the server. Your form may contain only `language` parameter. Additionally you may add `redirectTo` parameter with URL your user should be redirected after switching language (usually the same URL where user was before). The names of these parameters (`language` and `redirectTo`) is not predefined, it's completely up to you and they are used only in you handler action described in step 5.
+
+Please avoid use GET method of HTTP for switching language. As described in RFC-2616 the GET method should not be used in case different from retrieving information. Your browser may prefetch links on your page and switch language randomly. On the other hand request with GET method can be cached on proxy, so switch may not work. Please always use POST method for action which doing something.
+
+Here is very simple example of language switching form. Add this to some view or layout:
+
+```
+        <?= Html::beginForm(['site/switch-language'], 'post') ?>
+        <?= Html::hiddenInput('redirectTo', \yii\helpers\Url::to(Yii::$app->request->url)) ?>
+        <?= Html::beginTag('select', ['name' => 'language', 'onchange' => 'this.form.submit();']) ?>
+        <?= Html::renderSelectOptions(\Yii::$app->language, [
+            'en-US' => 'English',
+            'de-DE' => 'Deutsch',
+            'ru-RU' => 'Russian',
+        ]) ?>
+        <?= Html::endTag('select') ?>
+        <?= Html::endForm() ?>
+        <p>Current language is <?= Html::encode(\Yii::$app->language) ?> </p>
+```
+
+Of course you may use more customized variant. For example, you may use CSS stylized dropdown list which submits hidden POST form.
 
 ### 5. Create handler action
 
