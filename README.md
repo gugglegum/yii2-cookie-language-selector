@@ -1,10 +1,10 @@
 # Yii2 Cookie Language Selector
 
-Yii2 language selector component based on cookies mechanism. This is very simple component which adds language switch functionality to your site. It's not a widget, it doesn't offers any GUI like [lajax/yii2-language-picker](https://github.com/lajax/yii2-language-picker). This may be useful because every real web-site has your own design and HTML markup. Some of web-sites uses `<select>`, some uses dropdown list showed on mouse hover in CSS, some uses HTML form, some uses ajax or `onclick` event which submits hidden POST form. With this component you're free to use any selection method. All you need is to make a handler to save new current language.
+This is very simple component which adds language switch functionality to your site using cookies mechanism. It's not a widget, it doesn't offers any GUI like [lajax/yii2-language-picker](https://github.com/lajax/yii2-language-picker). This may be useful because every real web-site has your own design and HTML markup. Some of web-sites uses `<select>`, some uses `<ul>` dropdown list with `onclick` event handler which submits hidden POST form. With this component you're free to use any language selection method. You just need a something able to send POST when needed to switch language and add very simple handler of this POST request.
 
 ## Installation
 
-Installation is very easy.
+Installation is very easy and contains following 5 steps.
 
 ### 1. Install component itself
 
@@ -76,3 +76,5 @@ Add to your `SiteController.php` following action-method:
         $this->redirect(Yii::$app->request->post('redirectTo', ['site/index']));
     }
 ```
+
+That's all! Your comments and suggestions are welcome.
