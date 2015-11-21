@@ -16,7 +16,7 @@ composer require gugglegum/yii2-cookie-language-selector
 
 ### 2. Add component to your config
 
-Go to your frontend's config add component config into `components` section:
+Go to your frontend's config and add component config into `components` section:
 
 ```
         'cookieLanguageSelector' => [
